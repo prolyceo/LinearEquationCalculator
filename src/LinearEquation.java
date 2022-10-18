@@ -1,3 +1,7 @@
+// TODO
+// public double roundedToHundredth(double toRound)
+// simplify fraction having 2 negatives [ -1/-1 becomes 1, etc], to do with strings
+
 public class LinearEquation {
     private double x1;
     private double x2;
@@ -21,15 +25,29 @@ public class LinearEquation {
         return Math.round(b);
     }
 
+    public double roundedToHundredth(double toRound) {
+        return 1;
+    }
+
     private double slope() {
-        return Math.round((y2 - y1) / (x2 - x1));
+        return (y2 - y1) / (x2 - x1);
     }
 
     public String lineEquation() {
-        if (yInt() >= 0) {
-            return "The equation of the line between the two points is: y = " + Math.round(slope()) + "x" + " + " + Math.round(yInt());
+        if (slope() != 0) {
+            if (yInt() > 0) {
+                return "The equation of the line between the two points is: y = " + slope() + "x" + " + " + yInt();
+            } else if (yInt() < 0) {
+                return "The equation of the line between the two points is: y = " + slope() + "x" + yInt();
+            } else {
+                return "The equation of the line between the two points is: y = " + slope() + "x";
+            }
         } else {
-            return "The equation of the line between the two points is: y = " + Math.round(slope()) + "x" + Math.round(yInt());
+            if (yInt() != 0) {
+                return "The equation of the line between the two points is: y = " + yInt();
+            } else {
+                return "The equation of the line between the two points is: y = 0";
+            }
         }
     }
 
@@ -56,6 +74,6 @@ public class LinearEquation {
     }
 
     public String calculatePointString(double x) {
-        return "The point on the line is (" + Math.round(x) + "," + Math.round(calculatePoint(x)) + ")";
+        return "The point on the line is (" + x + "," + calculatePoint(x) + ")";
     }
 }
