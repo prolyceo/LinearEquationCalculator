@@ -12,21 +12,25 @@ public class LinearEquation {
     }
 
     public String twoPoints() {
-        return "The two points are: (" + x1 + "," + y1 + ") and (" + x2 + "," + y2 + ")";
+        return "The two points are: (" + Math.round(x1) + "," + Math.round(y1) + ") and (" + Math.round(x2) + "," + Math.round(y2) + ")";
     }
 
     private double yInt() {
         double b;
         b = y1 - (((y2 - y1) / (x2 - x1)) * x1);
-        return b;
+        return Math.round(b);
     }
 
     private double slope() {
-        return (y2 - y1) / (x2 - x1);
+        return Math.round((y2 - y1) / (x2 - x1));
     }
 
     public String lineEquation() {
-        return "The equation of the line between the two points is: y = " + slope() + "x" + " + " + yInt();
+        if (yInt() >= 0) {
+            return "The equation of the line between the two points is: y = " + Math.round(slope()) + "x" + " + " + Math.round(yInt());
+        } else {
+            return "The equation of the line between the two points is: y = " + Math.round(slope()) + "x" + Math.round(yInt());
+        }
     }
 
     public String slopeString() {
@@ -52,6 +56,6 @@ public class LinearEquation {
     }
 
     public String calculatePointString(double x) {
-        return "The point on the line is (" + x + "," + calculatePoint(x) + ")";
+        return "The point on the line is (" + Math.round(x) + "," + Math.round(calculatePoint(x)) + ")";
     }
 }
