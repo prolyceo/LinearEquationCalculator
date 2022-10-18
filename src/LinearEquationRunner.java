@@ -20,6 +20,11 @@ public class LinearEquationRunner {
         double y2 = input.nextDouble();
         input.nextLine();
 
+        if (x1 == x2) {
+            System.out.println("These points are on a vertical line: x = " + x1);
+            System.exit(0);
+        }
+
         LinearEquation thisEq = new LinearEquation(x1, x2, y1, y2);
 
         System.out.println(thisEq.twoPoints());
