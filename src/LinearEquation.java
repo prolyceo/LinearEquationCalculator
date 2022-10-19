@@ -41,6 +41,11 @@ public class LinearEquation {
 
     private String slope() {
         // return roundedToHundredth((y2 - y1) / (x2 - x1));
+        if ((y2 - y1)/(x2 - x1) == 1) {
+            return "";
+        } else if ((y2 - y1)/(x2 - x1) == -1) {
+            return "-";
+        }
         if ((y2 - y1) < 0 && (x2 - x1) < 0 || (x2 - x1) < 0 && (y2 - y1) > 0) {
             return removeEnd.format(roundedToHundredth((y2 - y1)*-1)) + "/" + removeEnd.format(roundedToHundredth((x2 - x1)*-1));
         } else {
@@ -57,7 +62,7 @@ public class LinearEquation {
             if (yIntDouble() > 0) {
                 return "The equation of the line between the two points is: y = " + slope() + "x" + " + " + yInt();
             } else if (yIntDouble() < 0) {
-                return "The equation of the line between the two points is: y = " + slope() + "x" + yInt();
+                return "The equation of the line between the two points is: y = " + slope() + "x " + yInt();
             } else {
                 return "The equation of the line between the two points is: y = " + slope() + "x";
             }
