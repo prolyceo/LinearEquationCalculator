@@ -109,5 +109,6 @@ public class LinearEquation {
         toReturn += slopeString() + "\n";
         toReturn += yIntString() + "\n";
         toReturn += distanceString() + "\n";
+        return toReturn;
     }
 }
