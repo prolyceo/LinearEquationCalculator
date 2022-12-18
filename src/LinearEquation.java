@@ -100,4 +100,14 @@ public class LinearEquation {
     public String calculatePointString(double x) {
         return "The point on the line is (" + removeEnd.format(x) + "," + removeEnd.format(calculatePoint(x)) + ")";
     }
+    
+    public String lineInfo() {
+        String toReturn = "";
+        toReturn += "   Line info:   " + "\n";
+        toReturn += "The two points are: (" + x1 + "," + y1 + ") and (" + x2 + "," + y2 + ")" + "\n";
+        toReturn += lineEquation() + "\n";
+        toReturn += slopeString() + "\n";
+        toReturn += yIntString() + "\n";
+        toReturn += distanceString() + "\n";
+    }
 }
