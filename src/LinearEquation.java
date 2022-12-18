@@ -66,7 +66,7 @@ public class LinearEquation {
         return ReturnD;
     }
 
-    public String equation() {
+    private String equation() {
         if (slope() != 0) {
             if (yIntDouble() > 0) {
                 return "The equation of the line between the two points is: y = " + slopeString() + "x" + " + " + yIntercept();
@@ -89,7 +89,7 @@ public class LinearEquation {
 //     }
 
     // THIS IS A HELPER METHOD USING THE EXISTING yIntercept() METHOD
-    public String yInterceptString() {
+    private String yInterceptString() {
         return "The y-intercept is " + yIntercept();
     }
 
@@ -102,7 +102,7 @@ public class LinearEquation {
         return "The distance between the 2 points is " + distance();
     }
 
-    public double distance() {
+    private double distance() {
         double toReturnDistance = Double.parseDouble(removeEnd.format(calculateDistance()));
         return toReturnDistance;
     }
