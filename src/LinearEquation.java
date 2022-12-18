@@ -57,7 +57,7 @@ public class LinearEquation {
         return roundedToHundredth((y2 - y1) / (x2 - x1));
     }
 
-    public String lineEquation() {
+    public String equation() {
         if (slopeDouble() != 0) {
             if (yIntDouble() > 0) {
                 return "The equation of the line between the two points is: y = " + slope() + "x" + " + " + yInt();
@@ -105,7 +105,7 @@ public class LinearEquation {
         String toReturn = "";
         toReturn += "   Line info:   " + "\n";
         toReturn += "The two points are: (" + x1 + "," + y1 + ") and (" + x2 + "," + y2 + ")" + "\n";
-        toReturn += lineEquation() + "\n";
+        toReturn += equation() + "\n";
         toReturn += slopeString() + "\n";
         toReturn += yIntString() + "\n";
         toReturn += distanceString() + "\n";
