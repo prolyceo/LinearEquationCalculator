@@ -87,7 +87,7 @@ public class LinearEquation {
         return roundedToHundredth(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
     }
 
-    public String distanceString() {
+    public String distance() {
         return "The distance between the 2 points is " + removeEnd.format(calculateDistance());
     }
 
