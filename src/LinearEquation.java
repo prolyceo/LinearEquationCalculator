@@ -10,7 +10,7 @@ public class LinearEquation {
     private double y1;
     private double y2;
 
-    public LinearEquation(double x1, double y1, double x2, double y2) {
+    public LinearEquation(double x1, double x2, double y1, double y2) {
         this.x1 = x1;
         this.x2 = x2;
         this.y1 = y1;
@@ -23,9 +23,9 @@ public class LinearEquation {
         return roundedOffBd.doubleValue();
     }
 
-    public String twoPoints() {
-        return "The two points are: (" + removeEnd.format(x1) + "," + removeEnd.format(y1) + ") and (" + removeEnd.format(x2) + "," + removeEnd.format(y2) + ")";
-    }
+//    public String twoPoints() {
+//        return "The two points are: (" + removeEnd.format(x1) + "," + removeEnd.format(y1) + ") and (" + removeEnd.format(x2) + "," + removeEnd.format(y2) + ")";
+//    }
 
     private double yIntDouble() {
         double b;
@@ -47,6 +47,11 @@ public class LinearEquation {
         } else if ((y2 - y1)/(x2 - x1) == -1) {
             return "-";
         }
+        if (((y2 - y1)/(x2 - x1)) % 1 == 0) {
+            int toMakeString = (int) ((y2 - y1)/(x2 - x1));
+            String returnConvertedInt = Integer.toString(toMakeString);
+            return returnConvertedInt;
+        }
         if ((y2 - y1) < 0 && (x2 - x1) < 0 || (x2 - x1) < 0 && (y2 - y1) > 0) {
             return removeEnd.format(roundedToHundredth((y2 - y1)*-1)) + "/" + removeEnd.format(roundedToHundredth((x2 - x1)*-1));
         } else {
@@ -57,22 +62,22 @@ public class LinearEquation {
     private double slope() {
         double tempD = roundedToHundredth((y2 - y1) / (x2 - x1));
         String toReturnD = removeEnd.format(tempD);
-        double returnD = Double.parseDouble(toReturnD);
+        double ReturnD = Double.parseDouble(toReturnD);
         return ReturnD;
     }
 
     public String equation() {
-        if (slopeDouble() != 0) {
+        if (slope() != 0) {
             if (yIntDouble() > 0) {
-                return "The equation of the line between the two points is: y = " + slopeString() + "x" + " + " + yInt();
+                return "The equation of the line between the two points is: y = " + slopeString() + "x" + " + " + yIntercept();
             } else if (yIntDouble() < 0) {
-                return "The equation of the line between the two points is: y = " + slopeString() + "x " + yInt();
+                return "The equation of the line between the two points is: y = " + slopeString() + "x " + yIntercept();
             } else {
                 return "The equation of the line between the two points is: y = " + slopeString() + "x";
             }
         } else {
             if (yIntDouble() != 0) {
-                return "The equation of the line between the two points is: y = " + yInt();
+                return "The equation of the line between the two points is: y = " + yIntercept();
             } else {
                 return "The equation of the line between the two points is: y = 0";
             }
@@ -83,6 +88,7 @@ public class LinearEquation {
 //         return "The slope of the line is " + removeEnd.format(slopeDouble());
 //     }
 
+    // THIS IS A HELPER METHOD USING THE EXISTING yIntercept() METHOD
     public String yInterceptString() {
         return "The y-intercept is " + yIntercept();
     }
@@ -91,13 +97,19 @@ public class LinearEquation {
         return roundedToHundredth(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
     }
 
-    public String distance() {
-        return "The distance between the 2 points is " + removeEnd.format(calculateDistance());
+    // THIS IS A HELPER METHOD USING THE EXISTING distance() DOUBLE
+    private String distanceString() {
+        return "The distance between the 2 points is " + distance();
+    }
+
+    public double distance() {
+        double toReturnDistance = Double.parseDouble(removeEnd.format(calculateDistance()));
+        return toReturnDistance;
     }
 
     private double calculatePoint(double x) {
         double y;
-        y = (slopeDouble() * x) + yIntDouble();
+        y = (slope() * x) + yIntDouble();
         return y;
     }
 
@@ -108,10 +120,10 @@ public class LinearEquation {
     public String lineInfo() {
         String toReturn = "";
         toReturn += "   Line info:   " + "\n";
-        toReturn += "The two points are: (" + x1 + "," + y1 + ") and (" + x2 + "," + y2 + ")" + "\n";
+        toReturn += "The two points are: (" + removeEnd.format(x1) + "," + removeEnd.format(y1) + ") and (" + removeEnd.format(x2) + "," + removeEnd.format(y2) + ")" + "\n";
         toReturn += equation() + "\n";
-        toReturn += slopeString() + "\n";
-        toReturn += yIntString() + "\n";
+        toReturn += "The slope of the line is: " + slope() + "\n";
+        toReturn += yInterceptString() + "\n";
         toReturn += distanceString() + "\n";
         return toReturn;
     }

@@ -34,11 +34,11 @@ public class LinearEquationRunner {
 
         LinearEquation thisEq = new LinearEquation(x1, x2, y1, y2);
 
-        System.out.println(thisEq.twoPoints());
-        System.out.println(thisEq.lineEquation());
-        System.out.println(thisEq.slopeString());
-        System.out.println(thisEq.yIntString());
-        System.out.println(thisEq.distanceString());
+        System.out.println(thisEq.lineInfo());
+//        System.out.println(thisEq.lineEquation());
+//        System.out.println(thisEq.slopeString());
+//        System.out.println(thisEq.yIntString());
+//        System.out.println(thisEq.distanceString());
 
         System.out.print("Enter any value for x: ");
         double x = input.nextDouble();
