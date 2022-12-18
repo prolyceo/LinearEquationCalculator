@@ -54,7 +54,7 @@ public class LinearEquation {
         }
     }
 
-    private double slopeDouble() {
+    private double slope() {
         double tempD = roundedToHundredth((y2 - y1) / (x2 - x1));
         String toReturnD = removeEnd.format(tempD);
         double returnD = Double.parseDouble(toReturnD);
