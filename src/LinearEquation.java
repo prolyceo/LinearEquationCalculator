@@ -33,13 +33,14 @@ public class LinearEquation {
         return roundedToHundredth(b);
     }
 
-    private String yInt() {
-        return removeEnd.format(yIntDouble());
+    private double yIntercept() {
+        double returnY = Double.parseDouble(removeEnd.format(yIntDouble())); 
+        return returnY;
     }
 
     DecimalFormat removeEnd = new DecimalFormat("#.##");
 
-    private String slope() {
+    private String slopeString() {
         // return roundedToHundredth((y2 - y1) / (x2 - x1));
         if ((y2 - y1)/(x2 - x1) == 1) {
             return "";
@@ -54,17 +55,20 @@ public class LinearEquation {
     }
 
     private double slopeDouble() {
-        return roundedToHundredth((y2 - y1) / (x2 - x1));
+        double tempD = roundedToHundredth((y2 - y1) / (x2 - x1));
+        String toReturnD = removeEnd.format(tempD);
+        double returnD = Double.parseDouble(toReturnD);
+        return ReturnD;
     }
 
     public String equation() {
         if (slopeDouble() != 0) {
             if (yIntDouble() > 0) {
-                return "The equation of the line between the two points is: y = " + slope() + "x" + " + " + yInt();
+                return "The equation of the line between the two points is: y = " + slopeString() + "x" + " + " + yInt();
             } else if (yIntDouble() < 0) {
-                return "The equation of the line between the two points is: y = " + slope() + "x " + yInt();
+                return "The equation of the line between the two points is: y = " + slopeString() + "x " + yInt();
             } else {
-                return "The equation of the line between the two points is: y = " + slope() + "x";
+                return "The equation of the line between the two points is: y = " + slopeString() + "x";
             }
         } else {
             if (yIntDouble() != 0) {
@@ -75,12 +79,12 @@ public class LinearEquation {
         }
     }
 
-    public String slopeString() {
-        return "The slope of the line is " + removeEnd.format(slopeDouble());
-    }
+//     public String slopeString() {
+//         return "The slope of the line is " + removeEnd.format(slopeDouble());
+//     }
 
-    public String yIntString() {
-        return "The y-intercept is " + yInt();
+    public String yInterceptString() {
+        return "The y-intercept is " + yIntercept();
     }
 
     private double calculateDistance() {
